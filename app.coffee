@@ -8,7 +8,6 @@ stylus = require 'stylus'
 debug = require('debug')('bartholomew')
 
 routes = require './routes/index'
-users = require './routes/users'
 
 app = express()
 
@@ -20,12 +19,10 @@ app.use logger()
 app.use bodyParser.json()
 app.use bodyParser.urlencoded()
 app.use cookieParser()
-app.use stylus.middleware(path.join(__dirname, 'public/stylesheets'))
-# TODO Change static root
-app.use express.static(path.join(__dirname, 'public'))
+app.use '/static', stylus.middleware(path.join(__dirname, 'public/stylesheets'))
+app.use '/static', express.static(path.join(__dirname, 'public'))
 
 app.use '/', routes
-app.use '/users', users
 
 app.use (req, res, next) ->
   err = new Error('Not Found')
@@ -48,3 +45,4 @@ app.use (err, req, res, next) ->
 app.set 'port', process.env.PORT || 3000
 server = app.listen app.get('port'), ->
   debug 'Express server listening on port ' + server.address().port
+
