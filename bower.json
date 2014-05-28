@@ -1,0 +1,22 @@
+{
+  "name": "bartholomew",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kevinleeone/bartholomew",
+  "authors": [
+    "Kevin Lee <kevinleeone@gmail.com>"
+  ],
+  "description": "BGP Monitoring Framework",
+  "main": "app.coffee",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/bower_components",
+    "test",
+    "tests"
+  ]
+}
