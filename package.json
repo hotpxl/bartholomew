@@ -29,6 +29,8 @@
     "path": "^0.4.9",
     "serve-favicon": "^2.0.0",
     "stylus": "^0.45.1",
-    "supervisor": "^0.6.0"
+    "supervisor": "^0.6.0",
+    "underscore": "~1.6.0",
+    "lazy": "~1.0.11"
   }
 }
