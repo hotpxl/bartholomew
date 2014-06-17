@@ -30,11 +30,11 @@ if require.main == module
   lazy stream
     .lines
     .map(String)
-    .skip 5
     .map (str) ->
+      # Skip non entries
       if str[0] != '*'
         return
-      path = str.split(/\s+/)[4..-2]
+      path = str.trim()[61..].split(/\s+/)[..-2]
       if path.length < 2
         return
       for i in [0..path.length - 2]
