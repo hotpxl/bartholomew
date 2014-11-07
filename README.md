@@ -1,8 +1,14 @@
 # bartholomew
 
+## Introduction
+
 BGP Monitoring Framework
 
-# Installation for Developers
+## Usage for Developers
 
-`npm install`
+Make sure you have `npm` installed on your system.
+
+`npm install` and everything is set!
+
+Run with `npm start` in a development environment. For deployment, please use a reverse proxy and turn off debugging flags for maximum safety.
 
