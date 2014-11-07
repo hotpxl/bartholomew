@@ -1,22 +1,19 @@
 {
   "name": "bartholomew",
   "version": "1.0.0",
-  "description": "BGP Monitoring Framework",
-  "main": "index.js",
-  "dependencies": {
-    "coffee-script": "*"
-  },
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "DEBUG=*,-stylus:lexer supervisor -x coffee ./bin/www.coffee"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/kevinleeone/bartholomew.git"
-  },
-  "author": "Yutian Li",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kevinleeone/bartholomew/issues"
-  },
-  "homepage": "https://github.com/kevinleeone/bartholomew"
+  "dependencies": {
+    "body-parser": "*",
+    "coffee-script": "*",
+    "cookie-parser": "*",
+    "debug": "*",
+    "express": "*",
+    "jade": "*",
+    "morgan": "*",
+    "serve-favicon": "*",
+    "supervisor": "*"
+  }
 }
