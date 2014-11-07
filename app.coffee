@@ -4,8 +4,9 @@ favicon = require 'serve-favicon'
 logger = require 'morgan'
 cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
+stylus = require 'stylus'
 
-routes = require './routes'
+routes = require './routes/main'
 
 # Setting
 app = express()
@@ -16,11 +17,11 @@ app.set 'view engine', 'jade'
 app.use favicon(path.join(__dirname, '/public/images/favicon.ico'))
 app.use logger('dev')
 app.use bodyParser.json()
-app.use bodyParser.urlencoded()
+app.use bodyParser.urlencoded { extended: true }
 app.use cookieParser()
 
 # Dynamic routing
-app.use '/', routes.index
+app.use '/', routes
 
 # Static routing
 app.use '/static/stylesheets', stylus.middleware(
@@ -35,7 +36,7 @@ app.use (req, res, next) ->
   err.status = 404
   next err
 
-if  app.get('env') == 'development'
+if app.get('env') == 'development'
   app.use (err, req, res, next) ->
     res.status err.status || 500
     res.render 'error',
