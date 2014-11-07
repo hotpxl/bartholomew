@@ -2,6 +2,6 @@ express = require 'express'
 router = express.Router()
 
 router.get '/', (req, res, next) ->
-  res.json {'a': 'b'}
+  res.render 'index'
 
 module.exports = router

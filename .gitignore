@@ -1,6 +1,7 @@
 # Custom
 *.swp
-public/stylesheets/*.css
+public/stylesheets
+public/javascripts
 tools/data
 
 # Logs

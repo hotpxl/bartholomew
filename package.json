@@ -8,13 +8,14 @@
   "dependencies": {
     "body-parser": "*",
     "coffee-script": "*",
+    "connect-coffee-script": "*",
     "cookie-parser": "*",
     "debug": "*",
     "express": "*",
     "jade": "*",
     "morgan": "*",
     "serve-favicon": "*",
-    "supervisor": "*",
-    "stylus": "*"
+    "stylus": "*",
+    "supervisor": "*"
   }
 }

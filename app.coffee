@@ -5,6 +5,7 @@ logger = require 'morgan'
 cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
 stylus = require 'stylus'
+connectCoffeeScript = require 'connect-coffee-script'
 
 routes = require './routes/main'
 
@@ -28,6 +29,11 @@ app.use '/static/stylesheets', stylus.middleware(
   src: path.join __dirname, 'public/stylus'
   dest: path.join __dirname, 'public/stylesheets'
 )
+app.use '/static/javascripts', connectCoffeeScript(
+  src: path.join __dirname, 'public/coffee'
+  dest: path.join __dirname, 'public/javascripts'
+)
+
 app.use '/static', express.static(path.join(__dirname, 'public'))
 
 # Error handling
