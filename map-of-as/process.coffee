@@ -30,9 +30,13 @@ getASForCountries = (asToCountry) ->
     ret[v].push(k)
   ret
 
+getNumASForCountries = (asToCountry) ->
+  countries = getASForCountries asToCountry
+  _.map countries, (v, k) ->
+    [k, v.length]
+
 exports.parseFile = parseFile
 exports.getASForCountry = getASForCountry
+exports.getASForCountries = getASForCountries
+exports.getNumASForCountries = getNumASForCountries
 
-a = parseFile 'as_raw.txt'
-b = getASForCountries a, 'LY'
-console.log b

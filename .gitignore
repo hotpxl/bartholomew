@@ -2,7 +2,7 @@
 *.swp
 public/stylesheets
 public/javascripts
-tools/data
+public/bower_components
 
 # Logs
 logs

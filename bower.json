@@ -1,6 +1,5 @@
 {
   "name": "bartholomew",
-  "version": "1.0.0",
   "private": true,
   "ignore": [
     "**/.*",
@@ -9,5 +8,8 @@
     "public/bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "jquery": "*"
+  }
 }
