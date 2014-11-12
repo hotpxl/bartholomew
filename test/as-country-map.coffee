@@ -7,11 +7,11 @@ app = require '../app'
 app.enable 'automatedTesting'
 
 describe 'AS of Country Map', ->
-  parsed = m.parseFile path.join(__dirname, 'as-country-map-example.input')
+  parsed = m.parseFile path.join(__dirname, 'as-names.input')
   describe '#parseFile()', ->
-    it 'should correctly parse example file', ->
-      parsed.should.deep.
-      equal JSON.parse(fs.readFileSync(path.join(__dirname, 'as-country-map-example.expected')))
+    it 'should correctly parse AS names file', ->
+      parsed.should.deep
+      .equal JSON.parse(fs.readFileSync(path.join(__dirname, 'as-names.expected')))
   describe '#getASForCountry()', ->
     it 'should count correctly for China', ->
       m.getASForCountry(parsed, 'CN').should.have.length 745
@@ -30,7 +30,7 @@ describe 'Server', ->
       .expect (res) ->
         res.body
         .should.deep
-        .equal JSON.parse fs.readFileSync(path.join(__dirname, 'as-country-map-server.expected'))
+        .equal JSON.parse fs.readFileSync(path.join(__dirname, 'as-country-map-json.expected'))
         return
       .end (err) ->
         done(err)

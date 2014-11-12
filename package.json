@@ -17,8 +17,7 @@
     "morgan": "",
     "serve-favicon": "",
     "stylus": "",
-    "supervisor": "",
-    "lazy.js": ""
+    "supervisor": ""
   },
   "devDependencies": {
     "grunt": "",

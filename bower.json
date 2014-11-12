@@ -10,7 +10,8 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "*",
-    "requirejs": "*"
+    "jquery": "",
+    "requirejs": "",
+    "echarts": "~2.0.4"
   }
 }
