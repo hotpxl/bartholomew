@@ -3,14 +3,7 @@ module.exports = (grunt) ->
     pkg: grunt.file.readJSON 'package.json'
     coffeelint:
       app:
-        src: [
-          'bin/**/*.coffee',
-          '*.coffee',
-          'routes/**/*.coffee',
-          'test/**/*.coffee',
-          'interconnection-of-as/**/*.coffee',
-          'map-of-as/**/*.coffee'
-        ]
+        src: grunt.file.expand ['**/*.coffee', '!node_modules/**/*']
         options:
           arrow_spacing:
             level: 'error'
