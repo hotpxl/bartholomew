@@ -1,5 +1,7 @@
 # bartholomew
 
+[![Build Status](https://travis-ci.org/kevinleeone/bartholomew.svg?branch=master)](https://travis-ci.org/kevinleeone/bartholomew)
+
 ## Introduction
 
 BGP Monitoring Framework
