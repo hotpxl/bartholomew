@@ -42,8 +42,10 @@ exports.getConnection = (filename) ->
 exports.pruneConnection = (connection, targets) ->
   _.reduce connection, (accumulator, v, k) ->
     if parseInt(k) in targets
-      accumulator[k] = _.filter v, (i) ->
+      pruned =  _.filter v, (i) ->
         i in targets
+      if pruned.length
+        accumulator[k] = pruned
     accumulator
   , {}
 
