@@ -21,6 +21,7 @@
   },
   "devDependencies": {
     "grunt": "",
-    "grunt-coffeelint": ""
+    "grunt-coffeelint": "",
+    "grunt-mocha-test": ""
   }
 }

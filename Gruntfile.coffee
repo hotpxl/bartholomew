@@ -7,7 +7,7 @@ module.exports = (grunt) ->
           'bin/**/*.coffee',
           '*.coffee',
           'routes/**/*.coffee',
-          'tests/**/*.coffee',
+          'test/**/*.coffee',
           'interconnection_of_as/**/*.coffee',
           'map_of_as/**/*.coffee'
         ]
@@ -39,5 +39,14 @@ module.exports = (grunt) ->
             level: 'error'
           space_operators:
             level: 'error'
+    mochaTest:
+      app:
+        src: [
+          'test/**/*.coffee'
+        ]
+        options:
+          reporter: 'spec'
+          require: 'coffee-script/register'
   grunt.loadNpmTasks 'grunt-coffeelint'
-  grunt.registerTask 'default', ['coffeelint']
+  grunt.loadNpmTasks 'grunt-mocha-test'
+  grunt.registerTask 'default', ['coffeelint', 'mochaTest']
