@@ -45,7 +45,7 @@ module.exports = (grunt) ->
           'test/**/*.coffee'
         ]
         options:
-          reporter: 'spec'
+          reporter: 'nyan'
           require: 'coffee-script/register'
   grunt.loadNpmTasks 'grunt-coffeelint'
   grunt.loadNpmTasks 'grunt-mocha-test'
