@@ -1,7 +1,7 @@
 express = require 'express'
 path = require 'path'
 favicon = require 'serve-favicon'
-logger = require 'morgan'
+morgan = require 'morgan'
 cookieParser = require 'cookie-parser'
 bodyParser = require 'body-parser'
 stylus = require 'stylus'
@@ -16,7 +16,10 @@ app.set 'view engine', 'jade'
 
 # Middleware
 app.use favicon(path.join(__dirname, '/public/images/favicon.ico'))
-app.use logger('dev')
+app.use morgan('dev',
+  skip: ->
+    return app.enabled 'automatedTesting'
+)
 app.use bodyParser.json()
 app.use bodyParser.urlencoded { extended: true }
 app.use cookieParser()
