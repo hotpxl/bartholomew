@@ -8,8 +8,8 @@ module.exports = (grunt) ->
           '*.coffee',
           'routes/**/*.coffee',
           'test/**/*.coffee',
-          'interconnection_of_as/**/*.coffee',
-          'map_of_as/**/*.coffee'
+          'interconnection-of-as/**/*.coffee',
+          'map-of-as/**/*.coffee'
         ]
         options:
           arrow_spacing:
