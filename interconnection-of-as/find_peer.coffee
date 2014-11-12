@@ -1,7 +1,6 @@
 fs = require 'fs'
 readline = require 'readline'
 _ = require 'lodash'
-path = require 'path'
 
 addPath = (from, to, d) ->
   # from and to should be numbers
@@ -14,7 +13,7 @@ addPath = (from, to, d) ->
       d[from].push to
   d
 
-exports.processDumpFile = (filename) ->
+exports.getConnection = (filename) ->
   aggregateToArray = (str) ->
     cur = parseInt str
     if isNaN cur
@@ -22,7 +21,7 @@ exports.processDumpFile = (filename) ->
         parseInt i
     else
       [cur]
-  rawEntries = fs.readFileSync(path.join(__dirname, filename), encoding: 'UTF-8').trim().split '\n'
+  rawEntries = fs.readFileSync(filename, encoding: 'UTF-8').trim().split '\n'
   validEntries = _.filter rawEntries, (str) ->
     str[0] == '*'
   connection = _.reduce validEntries, (accumulator, str) ->

@@ -1,0 +1,11 @@
+BGP table version is 0, local router ID is 10.0.0.1
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
+   Network          Next Hop            Metric LocPrf Weight Path
+*  1.0.0.0/22       202.112.60.243                         0 4538 10026 12715 51487 i
+Well, this random comment shouldn't be part of our data
+*  20.149.0.0/20    202.112.60.243                         0 4538 10026 3549 22562 {4237,17916} ?
+Duplicacy, with mangled space
+*  1.0.0.0/22  202.112.60.243           0 4538 10026 12715 51487 999 i
