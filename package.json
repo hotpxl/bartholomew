@@ -2,7 +2,8 @@
   "name": "bartholomew",
   "private": true,
   "scripts": {
-    "start": "DEBUG=*,-stylus:lexer supervisor -x coffee ./bin/www.coffee"
+    "start": "DEBUG=*,-stylus:lexer supervisor -x coffee ./bin/www.coffee",
+    "test": "grunt"
   },
   "dependencies": {
     "body-parser": "",
