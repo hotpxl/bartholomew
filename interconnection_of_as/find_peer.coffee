@@ -1,7 +1,7 @@
 fs = require 'fs'
 readline = require 'readline'
-lazy = require 'lazy'
-_ = require 'underscore'
+Lazy = require 'lazy.js'
+_ = require 'lodash'
 
 aggregateToArray = (str) ->
   cur = parseInt str

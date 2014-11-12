@@ -5,17 +5,22 @@
     "start": "DEBUG=*,-stylus:lexer supervisor -x coffee ./bin/www.coffee"
   },
   "dependencies": {
-    "body-parser": "*",
-    "coffee-script": "*",
-    "connect-coffee-script": "*",
-    "cookie-parser": "*",
-    "debug": "*",
-    "express": "*",
-    "jade": "*",
-    "lodash": "*",
-    "morgan": "*",
-    "serve-favicon": "*",
-    "stylus": "*",
-    "supervisor": "*"
+    "body-parser": "",
+    "coffee-script": "",
+    "connect-coffee-script": "",
+    "cookie-parser": "",
+    "debug": "",
+    "express": "~4",
+    "jade": "",
+    "lodash": "",
+    "morgan": "",
+    "serve-favicon": "",
+    "stylus": "",
+    "supervisor": "",
+    "lazy.js": ""
+  },
+  "devDependencies": {
+    "grunt": "",
+    "grunt-coffeelint": ""
   }
 }
