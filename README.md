@@ -1,6 +1,8 @@
 # bartholomew
 
-[![Build Status](https://travis-ci.org/kevinleeone/bartholomew.svg?branch=master)](https://travis-ci.org/kevinleeone/bartholomew)
+Stable Status: [![Build Status](https://travis-ci.org/kevinleeone/bartholomew.svg?branch=master)](https://travis-ci.org/kevinleeone/bartholomew)
+
+Dev Status: [![Build Status](https://travis-ci.org/kevinleeone/bartholomew.svg?branch=dev)](https://travis-ci.org/kevinleeone/bartholomew)
 
 ## Introduction
 
