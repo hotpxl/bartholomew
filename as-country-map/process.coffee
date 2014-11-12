@@ -3,7 +3,7 @@ fs = require 'fs'
 
 parseFile = (filename) ->
   raw = fs.readFileSync filename, encoding: 'utf-8'
-  rawList = raw.split '\n'
+  rawList = raw.trim().split '\n'
   asToCountry = {}
   _.forEach rawList, (i) ->
     name = i.split(' ', 1)[0][2..]
