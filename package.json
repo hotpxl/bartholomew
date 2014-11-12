@@ -24,6 +24,7 @@
     "grunt": "",
     "grunt-coffeelint": "",
     "grunt-mocha-test": "",
-    "chai": ""
+    "chai": "",
+    "supertest": ""
   }
 }
