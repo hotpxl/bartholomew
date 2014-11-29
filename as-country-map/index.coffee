@@ -1,5 +1,6 @@
 _ = require 'lodash'
 fs = require 'fs'
+path = require 'path'
 
 parseFile = (filename) ->
   raw = fs.readFileSync filename, encoding: 'utf-8'
@@ -15,28 +16,26 @@ parseFile = (filename) ->
         asToCountry[name] = country
   asToCountry
 
-getASForCountry = (asToCountry, country) ->
+exports.asToCountryMap = asToCountryMap = do ->
+  parseFile path.join(__dirname, './as_raw.txt')
+
+exports.getASListForCountry = getASListForCountry = (country) ->
   ret = []
-  _.forEach asToCountry, (v, k) ->
+  _.forEach asToCountryMap, (v, k) ->
     if v == country
       ret.push k
   ret
 
-getASForCountries = (asToCountry) ->
+exports.getASListsForAllCountries = getASListsForAllCountries = ->
   ret = {}
-  _.forEach asToCountry, (v, k) ->
+  _.forEach asToCountryMap, (v, k) ->
     if not ret[v]
       ret[v] = []
     ret[v].push(k)
   ret
 
-getNumASForCountries = (asToCountry) ->
-  countries = getASForCountries asToCountry
+exports.getNumOfASesForAllCountries = getNumOfASesForAllCountries = ->
+  countries = getASListsForAllCountries asToCountryMap
   _.map countries, (v, k) ->
     [k, v.length]
-
-exports.parseFile = parseFile
-exports.getASForCountry = getASForCountry
-exports.getASForCountries = getASForCountries
-exports.getNumASForCountries = getNumASForCountries
 
