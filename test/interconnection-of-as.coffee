@@ -1,7 +1,7 @@
 path = require 'path'
 fs = require 'fs'
 should = require('chai').should()
-m = require '../interconnection-of-as/find_peer'
+m = require '../interconnection-of-as'
 
 describe 'Interconnection', ->
   connection = m.getConnection path.join(__dirname, 'bgp-dump.input')
