@@ -3,6 +3,7 @@
 public/stylesheets
 public/javascripts
 public/bower_components
+*_bgp
 
 # Logs
 logs
