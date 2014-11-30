@@ -1,6 +1,6 @@
 express = require 'express'
 path = require 'path'
-# mapOfAS = require '../as-country-map/process'
+asCountryMap = require '../as-country-map'
 top80Countries = require '../top-80-countries'
 router = express.Router()
 
@@ -10,8 +10,8 @@ router.get '/', (req, res, next) ->
 router.get '/2', (req, res, next) ->
   res.render 'interconnection'
 
-# router.get '/api/as', (req, res, next) ->
-#   res.json mapOfAS.getNumASForCountries mapOfAS.parseFile(path.join(__dirname, '../as-country-map/as_raw.txt'))
+router.get '/api/as', (req, res, next) ->
+  res.json asCountryMap.getNumOfASesForAllCountries()
 
 router.get '/api/interconnection', (req, res, next) ->
   ret = {}
