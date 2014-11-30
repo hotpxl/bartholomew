@@ -52,5 +52,3 @@ exports.getCountryLocations = getCountryLocations = ->
     ret[name] = info.location
   ret
 
-console.log getConnectionsOfCountries()
-

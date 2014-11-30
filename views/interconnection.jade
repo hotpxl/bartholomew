@@ -10,16 +10,6 @@ html
       body { margin: 0; padding: 0; }
       #map { position: absolute; top: 0; bottom: 0; width: 100%; }
   body
-    script(src="https://api.tiles.mapbox.com/mapbox.js/plugins/arc.js/v0.1.0/arc.js")
     #map
-    script.
-      L.mapbox.accessToken = 'pk.eyJ1Ijoia2V2aW5sZWVvbmUiLCJhIjoiWDRPNTMzNCJ9.JHKw2xWdaKBahnn7SxtI9g';
-      var map = L.mapbox.map('map', 'kevinleeone.kbc2l4an');
-
-      // Start and end points, in x = longitude, y = latitude values
-      var start = { x: -122, y: 48 };
-      var end = { x: -77, y: 39 };
-      var generator = new arc.GreatCircle(start, end, { name: 'Seattle to DC' });
-      var line = generator.Arc(100, { offset: 10 });
-      L.geoJson(line.json()).addTo(map);
-
+    // script(src="https://api.tiles.mapbox.com/mapbox.js/plugins/arc.js/v0.1.0/arc.js")
+    script(src="/static/javascripts/interconnection.js")
