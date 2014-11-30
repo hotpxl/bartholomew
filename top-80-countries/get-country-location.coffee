@@ -24,10 +24,11 @@ countryFullName = JSON.parse fs.readFileSync('slim-2.json', encoding: 'utf-8')
 
 countryLocations = {}
 
-for i in countries
-  fullName = _.find countryFullName, (chr) ->
-    chr['alpha-2'] == i
-  countryLocations[i] = fullName: fullName?.name
+do ->
+  for i in countries
+    fullName = _.find countryFullName, (chr) ->
+      chr['alpha-2'] == i
+    countryLocations[i] = fullName: fullName?.name
 
 getLocation = (i) ->
   if i < countries.length
@@ -38,6 +39,7 @@ getLocation = (i) ->
       country.location = res
       getLocation i + 1
   else
-    fs.writeFileSync 'output.json', JSON.stringify(countryLocations)
+    fs.writeFileSync 'parsed.json', JSON.stringify(countryLocations)
 
-getLocation 0
+if require.main == module
+  getLocation 0
