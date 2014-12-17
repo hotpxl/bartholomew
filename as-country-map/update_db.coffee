@@ -37,7 +37,7 @@ readRirDataIntoDatabase = (rir, callback) ->
     (data) ->
       if data[0] != '#'  # Skip comments
         [registry, countryCode, type, start, value, date, status] = data.trim().split '|'
-        if type == 'asn' && status == 'allocated'  # Skip header and non AS entries
+        if type == 'asn' && (status == 'allocated' || status == 'assigned')  # Skip header and non AS entries
           start = parseInt start
           value = parseInt value
           if countryCode?.length != 2 ||
@@ -45,7 +45,7 @@ readRirDataIntoDatabase = (rir, callback) ->
           start < 0 ||
           value < 1
             throw new Error('Cannot parse record file')
-          for id in [start..start + value]
+          for id in [start..start + value - 1]
             info = new Info()
             info.id = id
             info.countryCode = countryCode
@@ -54,6 +54,10 @@ readRirDataIntoDatabase = (rir, callback) ->
   .on 'end',
     ->
       callback()
+
+Info.remove (err) ->
+  if err
+    throw err
 
 processList rirList, readRirDataIntoDatabase, ->
   db.disconnect()
