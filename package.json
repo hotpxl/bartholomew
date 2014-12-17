@@ -18,6 +18,7 @@
     "mongoose": "",
     "morgan": "",
     "serve-favicon": "",
+    "split": "",
     "stylus": "",
     "supervisor": ""
   },
