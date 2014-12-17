@@ -46,7 +46,7 @@ readRirDataIntoDatabase = (rir, callback) ->
           value < 1
             throw new Error('Cannot parse record file')
           for id in [start..start + value]
-            info = new Info();
+            info = new Info()
             info.id = id
             info.countryCode = countryCode
             info.registry = registry
