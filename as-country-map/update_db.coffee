@@ -55,9 +55,9 @@ readRirDataIntoDatabase = (rir, callback) ->
     ->
       callback()
 
-Info.remove (err) ->
-  if err
-    throw err
-
-processList rirList, readRirDataIntoDatabase, ->
+if require.main == module
+  Info.remove (err) ->
+    if err
+      throw err
+  processList rirList, readRirDataIntoDatabase, ->
   db.disconnect()
