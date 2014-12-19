@@ -4,18 +4,9 @@ mongoose = require 'mongoose'
 _ = require 'lodash'
 split = require 'split'
 secret = require './secret.json'
+Info = require './model'
 
 db = mongoose.connect secret.url
-
-Schema = mongoose.Schema
-
-InfoSchema = new Schema(
-  id: Number
-  countryCode: String
-  registry: String
-)
-
-Info = mongoose.model 'Info', InfoSchema
 
 rirList = ['afrinic', 'apnic', 'arin', 'lacnic', 'ripencc']
 
@@ -60,4 +51,4 @@ if require.main == module
     if err
       throw err
   processList rirList, readRirDataIntoDatabase, ->
-  db.disconnect()
+    db.disconnect()
