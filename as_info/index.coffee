@@ -1,9 +1,15 @@
 _ = require 'lodash'
-fs = require 'fs'
-path = require 'path'
-parsed = require './parsed.json'
+mongoose = require 'mongoose'
+debug = require('debug') 'asCountryMap'
+secret = require './secret.json'
 
-exports.asToCountryMap = parsed
+db = mongoose.connect secret.url
+
+mongoose.connection.on 'disconnected', ->
+  debug 'Mongoose default connection disconnected'
+
+process.on 'SIGINT', ->
+  db.disconnect()
 
 exports.getASListForCountry = getASListForCountry = (country) ->
   ret = []
