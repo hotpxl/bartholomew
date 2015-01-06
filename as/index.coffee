@@ -14,3 +14,7 @@ exports.findWithCountry = findWithCountry = do ->
   (countryCode) ->
     asListOfCountry[countryCode]
 
+exports.findWithID = findWithID = (id) ->
+  _.find cache, (i) ->
+    i.id == id
+
