@@ -14,8 +14,6 @@
     "express": "~4",
     "jade": "",
     "lodash": "",
-    "mongodb": "",
-    "mongoose": "",
     "morgan": "",
     "serve-favicon": "",
     "split": "",
