@@ -1,19 +1,16 @@
 fs = require 'fs'
-readline = require 'readline'
 _ = require 'lodash'
 
-addPath = (from, to, d) ->
-  # from and to should be numbers
-  if from != to
-    if to < from
-      [from, to] = [to, from]
-    if not d[from]
-      d[from] = [to]
-    else
+exports.parse = parse = (filename) ->
+  addPath = (from, to, d) ->
+    # from and to should be different numbers
+    if from != to
+      if to < from
+        [from, to] = [to, from]
+      if not d[from]?
+        d[from] = []
       d[from].push to
-  d
-
-exports.getConnection = (filename) ->
+    d
   aggregateToArray = (str) ->
     cur = parseInt str
     if isNaN cur
@@ -28,7 +25,7 @@ exports.getConnection = (filename) ->
     path = str.trim().split(/\s+/)[4..-2]
     if 2 <= path.length
       from = aggregateToArray path[0]
-      for i in [1..path.length - i]
+      for i in [1..path.length - 1]
         to = aggregateToArray path[i]
         for j in from
           for k in to
@@ -38,14 +35,4 @@ exports.getConnection = (filename) ->
   , {}
   _.forEach connection, (v, k) ->
     connection[k] = _.uniq _.sortBy(v), true
-
-exports.pruneConnection = (connection, targets) ->
-  _.reduce connection, (accumulator, v, k) ->
-    if parseInt(k) in targets
-      pruned =  _.filter v, (i) ->
-        i in targets
-      if pruned.length
-        accumulator[k] = pruned
-    accumulator
-  , {}
 
