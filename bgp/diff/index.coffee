@@ -1,4 +1,5 @@
 _ = require 'lodash'
+bgpConnection = require '../connection'
 
 diffList = (from, to) ->
   # Input lists should be sorted
@@ -33,8 +34,13 @@ exports.diff = diff = (from, to) ->
     acc
   , acc
 
-if require.main == module
-  p1 = '../data/2014-11-07_0000_bgp'
-  p2 = '../data/2015-01-06_0000_bgp'
-  a = require '../connection'
-  console.log diff(a.parse(p1), a.parse(p2))
+exports.getByDate = getByDate = (dateFrom, dateTo) ->
+  parseFrom = bgpConnection.getByDate dateFrom
+  parseTo = bgpConnection.getByDate dateTo
+  if parseFrom instanceof Error
+    parseFrom
+  else if parseTo instanceof Error
+    parseTo
+  else
+    diff parseFrom, parseTo
+

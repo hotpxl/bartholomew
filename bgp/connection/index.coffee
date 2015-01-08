@@ -1,7 +1,10 @@
 fs = require 'fs'
+path = require 'path'
 _ = require 'lodash'
+debug = require('debug')('bgp:connection')
 
 exports.parse = parse = (filename) ->
+  debug "parse #{filename}"
   addPath = (from, to, d) ->
     # from and to should be different numbers
     if from != to
@@ -22,11 +25,11 @@ exports.parse = parse = (filename) ->
   validEntries = _.filter rawEntries, (str) ->
     str[0] == '*'
   connection = _.reduce validEntries, (accumulator, str) ->
-    path = str.trim().split(/\s+/)[4..-2]
-    if 2 <= path.length
-      from = aggregateToArray path[0]
-      for i in [1..path.length - 1]
-        to = aggregateToArray path[i]
+    asPath = str.trim().split(/\s+/)[4..-2]
+    if 2 <= asPath.length
+      from = aggregateToArray asPath[0]
+      for i in [1..asPath.length - 1]
+        to = aggregateToArray asPath[i]
         for j in from
           for k in to
             addPath j, k, accumulator
@@ -35,4 +38,12 @@ exports.parse = parse = (filename) ->
   , {}
   _.forEach connection, (v, k) ->
     connection[k] = _.uniq _.sortBy(v), true
+
+exports.getByDate = getByDate = (date) ->
+  filename = "../data/#{date.toISOString()[..9]}_0000_bgp"
+  p = path.join __dirname, filename
+  if not fs.existsSync p
+    new Error('File does not exist')
+  else
+    parse p
 

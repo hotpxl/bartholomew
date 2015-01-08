@@ -14,7 +14,11 @@ exports.findWithCountry = findWithCountry = do ->
   (countryCode) ->
     asListOfCountry[countryCode]
 
-exports.findWithId = findWithId = (id) ->
-  _.find cache, (i) ->
-    i.id == id
+exports.findWithId = findWithId = do ->
+  reverseLookup = _.reduce cache, (acc, item) ->
+    acc[item.id] = item
+    acc
+  , {}
+  (id) ->
+    _.cloneDeep reverseLookup[id]
 

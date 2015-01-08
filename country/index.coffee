@@ -1,5 +1,3 @@
-path = require 'path'
-fs = require 'fs'
 _ = require 'lodash'
 
 cache = require './cache.json'
@@ -7,11 +5,19 @@ cache = require './cache.json'
 exports.findWithCountry = findWithCountry = (countryCode) ->
   _.cloneDeep cache[countryCode]
 
-exports.getCountryLocations = getCountryLocations = ->
-  _.reduce cache, (acc, v, k) ->
+exports.getCountryLocations = getCountryLocations = do ->
+  res = _.reduce cache, (acc, v, k) ->
     acc[k] = v.location
     acc
   , {}
+  ->
+    _.cloneDeep res
+
+exports.getCandidates = getCandidates = do ->
+  res = _.map cache, (v, k) ->
+    k
+  ->
+    _.cloneDeep res
 
 # exports.getConnectionsOfCountries = getConnectionsOfCountries = ->
 #   asConnection = interConnectionOfAS.getConnection path.join(__dirname, '../interconnection-of-as/2014-11-07_0000_bgp')
