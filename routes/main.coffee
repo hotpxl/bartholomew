@@ -1,23 +1,23 @@
 express = require 'express'
 path = require 'path'
-asCountryMap = require '../as-country-map'
-top80Countries = require '../top-80-countries'
+country = require '../country'
+combinator = require '../combinator'
+bgpConnection = require '../bgp/connection'
+bgpDiff = require '../bgp/diff'
+
 router = express.Router()
 
 router.get '/', (req, res, next) ->
   res.render 'index'
 
-router.get '/2', (req, res, next) ->
-  res.render 'interconnection'
+router.get '/api/country/locations', (req, res, next) ->
+  res.json country.getCountryLocations()
 
-router.get '/api/as', (req, res, next) ->
-  res.json asCountryMap.getNumOfASesForAllCountries()
+router.get '/api/demo', (req, res, next) ->
+  res.json combinator.getCountryConnections(bgpConnection.getByDate(new Date('2015-01-06')))
 
-router.get '/api/interconnection', (req, res, next) ->
-  ret = {}
-  ret.connection = top80Countries.getConnectionsOfCountries()
-  ret.loc = top80Countries.getCountryLocations()
-  res.json ret
+router.get '/api/demo2', (req, res, next) ->
+  res.json combinator.getCountryDiffs(bgpDiff.getByDate(new Date('2014-11-07'), new Date('2015-01-06')))
 
 module.exports = router
 

@@ -32,6 +32,8 @@ module.exports = (grunt) ->
             level: 'error'
           space_operators:
             level: 'error'
+          spacing_after_comma:
+            level: 'error'
     mochaTest:
       app:
         src: [
