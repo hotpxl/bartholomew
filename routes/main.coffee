@@ -10,6 +10,13 @@ router = express.Router()
 router.get '/', (req, res, next) ->
   res.render 'index'
 
+router.get '/angular', (req, res, next) ->
+  res.render 'angular'
+
+router.get '/partials/:p', (req, res, next) ->
+  console.log req.param
+  res.render req.params['p']
+
 router.get '/api/country/locations', (req, res, next) ->
   res.json country.getCountryLocations()
 

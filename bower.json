@@ -11,7 +11,7 @@
   ],
   "dependencies": {
     "jquery": "",
-    "requirejs": "",
-    "echarts": "~2.0.4"
+    "angular": "",
+    "angular-route": ""
   }
 }
